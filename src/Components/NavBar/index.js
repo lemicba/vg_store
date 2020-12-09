@@ -1,4 +1,5 @@
 import { Menu } from 'antd';
+import CarWidget from '../CarWidget'
 import logo from '../../images/logo.png';
 import './styles.scss';
 const SubMenu = Menu.SubMenu;
@@ -24,6 +25,9 @@ const Navbar = () => {
 						</Menu.Item>
 					</Menu>
 				</div>
+			</div>
+			<div className="menuCart">
+				<CarWidget />
 			</div>
 		</nav>
 	);
