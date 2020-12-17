@@ -1,40 +1,50 @@
-import { useState } from 'react';
-import { Card, Typography, Button } from 'antd';
-import { ShoppingCartOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import React, { useState, useEffect } from 'react'
+import Item from '../Item'
+import productImage from '../../images/cyberpunk.jpg'; 
+import productImageSecond from '../../images/rdr2.jpg';
 import './styles.scss';
 
 
-const ItemListContainer = ( props ) => {
-    const { Title } = Typography;
-    const [contador, setContador] = useState(1);
+const ItemListContainer = () => {
+    const [items, setItems] = useState([]);
 
-    const incrementar = () => setContador(contador + 1 );
-    const decrementar = () => setContador(contador - 1 );
-    
-    const comprar = () => alert(`Has agregado ${contador} productos a tu carrito `);
+    const products = [
+        {
+            id: 1,
+            titulo: 'Cyberpunk 2077',
+            stock: 5,
+            productImage: productImage,
+        },
+        {
+            id: 2,
+            titulo: 'Red Dead Redemption 2',
+            stock: 8,
+            productImage: productImageSecond,
+        },
+    ]
+
+    const getProducts = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(products);
+        }, 2000)
+    })
+
+    useEffect(() => {
+        getProducts.then(rta => setItems(rta));
+    }, []);
 
     return (
-    <div className="itemlist-container">
-        <Card
-            style={{ width: 600 }}
-            cover={
-            <img
-                alt={props.titleProduct}
-                src={props.productImage}
-            />
-            }
-            actions={[
-            <ShoppingCartOutlined onClick={comprar} key="ellipsis" />,
-            ]}
-        >
-            <Title level={4}>{props.titleProduct}</Title>
-            <div className="counter-container">
-                <Button shape="circle" onClick={decrementar} disabled={contador <= 1 ? true : null }  icon={<MinusOutlined />} />
-                <p className="counter-container_count">{contador}</p>
-                <Button shape="circle" onClick={incrementar}  disabled= {contador == props.stock ? true : null } icon={<PlusOutlined />} />
-            </div>
-        </Card>
-    </div>
+        <div className="itemlist-container">
+                {
+                    items.map((product, index) => (
+                            <Item
+                                titleProduct={product.titulo} 
+                                stock={product.stock}
+                                productImage={product.productImage}
+                            />
+                    ))
+                }
+        </div>
     );
 }
 

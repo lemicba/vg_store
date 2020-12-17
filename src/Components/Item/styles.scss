@@ -1,0 +1,11 @@
+.counter-container {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+
+    &_count {
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 20px;
+    }
+}
