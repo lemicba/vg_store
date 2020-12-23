@@ -1,6 +1,6 @@
 import Navbar from './Components/NavBar'
 import ItemListContainer from './Components/ItemListContainer'
-
+import ItemDetailContainer from './Components/ItemDetailContainer'
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         <div className="cards-container"> 
           <ItemListContainer />
         </div>
+          <ItemDetailContainer />
     </>
   );
 }
