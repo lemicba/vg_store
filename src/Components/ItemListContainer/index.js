@@ -1,37 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import Item from '../Item'
-import productImage from '../../images/cyberpunk.jpg'; 
-import productImageSecond from '../../images/rdr2.jpg';
+import { useParams } from 'react-router-dom';
+import { productList } from "../../assets/productos";
 import './styles.scss';
 
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([]);
 
-    const products = [
-        {
-            id: 1,
-            titulo: 'Cyberpunk 2077',
-            stock: 5,
-            productImage: productImage,
-        },
-        {
-            id: 2,
-            titulo: 'Red Dead Redemption 2',
-            stock: 8,
-            productImage: productImageSecond,
-        },
-    ]
+    const { categname } = useParams();
 
     const getProducts = new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(products);
-        }, 2000)
-    })
+            resolve(productList);
+        }, 500)
+    });
 
-    useEffect(() => {
-        getProducts.then(rta => setItems(rta));
-    }, []);
+    const productosSeleccionado = () => {
+        getProducts.then(
+            (respuesta) => {
+                if(categname) {
+                const productosCategoria = respuesta.filter(producto => producto.categoria === categname);
+            setItems(productosCategoria)}
+            else {
+                setItems(respuesta);
+            }
+            }
+        )
+    }
+
+    useEffect(() => productosSeleccionado(), [categname]);
 
     return (
         <div className="itemlist-container">
@@ -41,6 +39,8 @@ const ItemListContainer = () => {
                                 titleProduct={product.titulo} 
                                 stock={product.stock}
                                 productImage={product.productImage}
+                                id={product.id}
+                                key={product.id}
                             />
                     ))
                 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Card, Typography, Button } from 'antd';
 import { ShoppingCartOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 
@@ -19,7 +20,7 @@ const Item = ( props ) => {
             cover={
             <img
                 alt={props.titleProduct}
-                src={props.productImage}
+                src={`/${props.productImage}`}  
             />
             }
             actions={[
@@ -32,6 +33,11 @@ const Item = ( props ) => {
                 <p className="counter-container_count">{contador}</p>
                 <Button shape="circle" onClick={incrementar}  disabled= {contador === props.stock ? true : null } icon={<PlusOutlined />} />
             </div>
+            <Link to={`/item/${props.id}`} >
+                <Button type="primary">
+                    Ver más
+                </Button>
+            </Link>
         </Card>
     );
 }
