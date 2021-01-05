@@ -2,6 +2,7 @@ import Navbar from './Components/NavBar';
 import ItemListContainer from './Components/ItemListContainer';
 import ItemDetailContainer from './Components/ItemDetailContainer';
 import ErrorPage from './Components/Error';
+import CartContainer from './Components/CartContainer';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route exact path="/item/:itemid">
               <ItemDetailContainer />
+            </Route>
+            <Route exact path="/cart">
+              <CartContainer />
             </Route>
             <Route exact path="*">
               <ErrorPage/>
