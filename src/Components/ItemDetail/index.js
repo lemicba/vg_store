@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Row, Col, Button } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { useHistory } from "react-router-dom";
+import { Store } from '../../store'
 import './styles.scss';
 
 const ItemDetail = ( {item} ) => {
-
+    const [data, setData] = useContext(Store);
     const [contador, setContador] = useState(1);
 
     const incrementar = () => setContador(contador + 1 );
@@ -13,7 +14,11 @@ const ItemDetail = ( {item} ) => {
 
     const history = useHistory();
 
-    const handleClick = () => history.push("/cart");
+    const onAdd = () => {
+      setData({...data, cantidad: data.cantidad + contador,
+          items:[...data.items, item]});
+          history.push("/cart");
+    }
 
     return (
         <article className="itemDetail">
@@ -30,7 +35,7 @@ const ItemDetail = ( {item} ) => {
                 <p className="counter-container_count">{contador}</p>
                 <Button shape="circle" onClick={incrementar}  disabled= {contador === item.stock ? true : null } icon={<PlusOutlined />} />
               </div>
-              <Button onClick={handleClick} type="primary">
+              <Button onClick={onAdd} type="primary">
                     Agregar al carrito
               </Button>
             </Col>

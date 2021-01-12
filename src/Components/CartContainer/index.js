@@ -1,48 +1,43 @@
+import { useContext } from 'react';
 import { Layout, Table, Space } from 'antd';
+import { Store } from '../../store';
 import './styles.scss';
 
 const CartContainer = () => {
     const { Column } = Table;
-
-    const data = [
-    {
-        key: '1',
-        productName: 'Producto 1',
-        price: 60,
-        quantity: 1,
-    },
-    {
-        key: '2',
-        productName: 'Producto 2',
-        price: 30,
-        quantity: 2,
-    },
-    {
-        key: '3',
-        productName: 'Producto 3',
-        price: 40,
-        quantity: 1,
-    },
-    ];
+    const [data, setData] = useContext(Store);
+    const items = [...data.items];
+    console.log(items)
 
   return (
     <Layout>
         <div className="site-layout-content">
             <h1>Carrito</h1>
-            <Table dataSource={data}>
-                    <Column title="Producto" dataIndex="productName" key="productName" />
-                    <Column title="Precio" dataIndex="price" key="price" />
-                    <Column title="Cantidad" dataIndex="quantity" key="quantity" />
-                    <Column
-                    title="Action"
-                    key="action"
-                    render={(text, record) => (
-                        <Space size="middle">
-                            <a>Eliminar</a>
-                        </Space>
-                    )}
-                    />
-            </Table>
+                {
+                    items.map((items, index) => (
+                        <div className="cartDetail">
+                            <div className="cartDetail__row">
+                                <h3>
+                                    Titulo
+                                </h3>
+                                {items.titulo}
+                            </div>
+                            <div className="cartDetail__row">
+                                <h3>
+                                    Precio
+                                </h3>
+                                {items.precio}
+                            </div>
+                            <div className="cartDetail__row">
+                                <h3>
+                                    Cantidad
+                                </h3>
+                                {data.cantidad}
+                            </div>
+                        </div>
+
+                    ))
+                }
         </div>
     </Layout>
   );
