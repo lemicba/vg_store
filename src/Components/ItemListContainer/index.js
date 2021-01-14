@@ -30,17 +30,13 @@ const ItemListContainer = () => {
     }
 
     useEffect(() => productosSeleccionado(), [categname]);
-
     return (
         <div className="itemlist-container">
                 {
-                    items.map((product, index) => (
+                    items.map((items, index) => (
                             <Item
-                                titleProduct={product.titulo} 
-                                stock={product.stock}
-                                productImage={product.productImage}
-                                id={product.id}
-                                key={product.id}
+                                intex={index}
+                                items={items}
                             />
                     ))
                 }
