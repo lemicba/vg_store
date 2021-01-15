@@ -1,13 +1,12 @@
 import { useContext } from 'react';
-import { Layout, Table, Space } from 'antd';
+import { Layout } from 'antd';
 import { Store } from '../../store';
 import './styles.scss';
 
 const CartContainer = () => {
-    const { Column } = Table;
     const [data, setData] = useContext(Store);
     const items = [...data.items];
-    console.log(items)
+    
 
   return (
     <Layout>
@@ -32,7 +31,7 @@ const CartContainer = () => {
                                 <h3>
                                     Cantidad
                                 </h3>
-                                {data.cantidad}
+                                {items.quantity}
                             </div>
                         </div>
 

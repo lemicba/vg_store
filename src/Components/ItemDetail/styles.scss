@@ -1,10 +1,14 @@
 .itemDetail {
     padding: 20px;
+    color: white;
 
     &-image{
         width: 100%;
     }
     &-detail {
         padding: 30px;
+    }
+    h1, h3 {
+        color: white;
     }
 }

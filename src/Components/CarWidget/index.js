@@ -5,7 +5,7 @@ import { Store } from '../../store'
 
 const CarWidget = () => {
   const [data, setData] = useContext(Store);
-  console.log(data.cantidad);
+  //console.log(data.cantidad);
 
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {

@@ -33,10 +33,10 @@ const ItemListContainer = () => {
     return (
         <div className="itemlist-container">
                 {
-                    items.map((items, index) => (
+                    items.map((item, index) => (
                             <Item
                                 intex={index}
-                                items={items}
+                                item={item}
                             />
                     ))
                 }

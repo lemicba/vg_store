@@ -15,8 +15,25 @@ const ItemDetail = ( {item} ) => {
     const history = useHistory();
 
     const onAdd = () => {
-      setData({...data, cantidad: data.cantidad + contador,
+      const actualId = item.id;
+      const exist = data.items.some(items => items.id === actualId);
+      if(exist) {
+        const productosCarrito = data.items.map ( producto => {
+          if( producto.id === actualId) {
+            producto.quantity += contador;
+            return producto;
+          } else {
+            return producto;
+          }
+        });
+        data.items = [...productosCarrito]
+        history.push("/cart");
+      } else {
+        item.quantity = contador;
+        setData({...data, cantidad: data.cantidad + contador,
           items:[...data.items, item]});
+          history.push("/cart");
+      }
           history.push("/cart");
     }
 
