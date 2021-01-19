@@ -1,35 +1,37 @@
 import React, { useState, useEffect } from 'react'
 import Item from '../Item'
 import { useParams } from 'react-router-dom';
-import { productList } from "../../assets/productos";
+import { getFirestore } from '../../firebase';
 import './styles.scss';
 
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([]);
+    const db = getFirestore();
 
     const { categname } = useParams();
 
-    const getProducts = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(productList);
-        }, 500)
-    });
-
-    const productosSeleccionado = () => {
-        getProducts.then(
-            (respuesta) => {
-                if(categname) {
-                const productosCategoria = respuesta.filter(producto => producto.categoria === categname);
-            setItems(productosCategoria)}
+    const getProducts = () => {
+        db.collection('productos').get()
+        .then(docs => {
+            let arr = [];
+            docs.forEach(doc => {
+                arr.push(doc.data())
+            }) 
+            if(categname) {
+            const productosCategoria = arr.filter(producto => producto.categoria === categname);
+            setItems(productosCategoria)
+            }
             else {
-                setItems(respuesta);
+                setItems(arr);
             }
-            }
-        )
-    }
+        })
+        .catch(e => console.log(e));
+    };
 
-    useEffect(() => productosSeleccionado(), [categname]);
+
+    useEffect(() => getProducts(), [categname]);
+
     return (
         <div className="itemlist-container">
                 {
