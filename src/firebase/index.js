@@ -16,3 +16,6 @@ const app = firebase.initializeApp ({
   export function getFirestore() {
       return firebase.firestore(app);
   }
+  export function handleFirebase() {
+      return firebase
+  }

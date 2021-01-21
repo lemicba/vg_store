@@ -1,0 +1,17 @@
+.site-layout-content {
+    min-height: 280px;
+    padding: 24px;
+    background: #fff;
+  }
+
+  .cartDetail{
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    background: darkgray;
+    justify-content: space-around;
+
+    &__row {
+      text-align: center;
+    }
+  }

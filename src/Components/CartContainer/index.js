@@ -1,12 +1,16 @@
 import { useContext } from 'react';
-import { Layout } from 'antd';
+import { Layout, Button } from 'antd';
 import { Store } from '../../store';
+import { useHistory } from "react-router-dom";
 import './styles.scss';
 
 const CartContainer = () => {
     const [data, setData] = useContext(Store);
     const items = [...data.items];
+
+    const history = useHistory();
     
+    const onAdd = () => history.push("/checkout");
 
   return (
     <Layout>
@@ -37,6 +41,9 @@ const CartContainer = () => {
 
                     ))
                 }
+                <Button onClick={onAdd} type="primary">
+                    Agregar al carrito
+                </Button>
         </div>
     </Layout>
   );

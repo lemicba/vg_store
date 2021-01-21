@@ -4,7 +4,8 @@ import ItemListContainer from './Components/ItemListContainer';
 import ItemDetailContainer from './Components/ItemDetailContainer';
 import ErrorPage from './Components/Error';
 import CartContainer from './Components/CartContainer';
-import Slider from './Components/Slider'
+import Slider from './Components/Slider';
+import CartCheckout from './Components/CartCheckout';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Store } from './store';
 
@@ -36,6 +37,9 @@ function App() {
               </Route>
               <Route exact path="/cart">
                 <CartContainer />
+              </Route>
+              <Route exact path="/checkout">
+                <CartCheckout />
               </Route>
               <Route exact path="*">
                 <ErrorPage/>
