@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import { Row, Col, Button, notification  } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
-import { useHistory } from "react-router-dom";
 import { Store } from '../../store'
 import './styles.scss';
 
@@ -12,7 +11,6 @@ const ItemDetail = ( {item} ) => {
     const incrementar = () => setContador(contador + 1 );
     const decrementar = () => setContador(contador - 1 );
 
-    const history = useHistory();
 
     const openNotification = () => {
       notification.open({

@@ -1,7 +1,5 @@
-import { useState, useContext } from 'react';
-import { Card, Typography, Button } from 'antd';
+import { Button } from 'antd';
 import { Link } from 'react-router-dom';
-import { Store } from '../../store';
 import './styles.scss';
 
 
