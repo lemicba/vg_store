@@ -1,13 +1,22 @@
 import { useState, useContext } from 'react';
 import { Drawer, Button, Badge } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
+import { useHistory } from "react-router-dom";
 import { Store } from '../../store'
 
 const CarWidget = () => {
   const [data, setData] = useContext(Store);
-  //console.log(data.cantidad);
+  const items = [...data.items];
 
   const [visible, setVisible] = useState(false);
+
+  const history = useHistory();
+
+  const goToCard = () => {
+    history.push("/cart");
+    onClose();
+  }
+
   const showDrawer = () => {
     setVisible(true);
   };
@@ -22,6 +31,7 @@ const CarWidget = () => {
         </Button>
       </Badge>
       <Drawer
+        width="350"
         title="Carrito"
         placement="right"
         closable={true}
@@ -29,6 +39,34 @@ const CarWidget = () => {
         visible={visible}
       >
         <h4>Your cart is empty</h4>
+        {
+                    items.map((items, index) => (
+                        <div className="">
+                            <div className="">
+                                <h3>
+                                    Titulo
+                                </h3>
+                                {items.titulo}
+                            </div>
+                            <div className="">
+                                <h3>
+                                    Precio
+                                </h3>
+                                {items.precio}
+                            </div>
+                            <div className="">
+                                <h3>
+                                    Cantidad
+                                </h3>
+                                {items.quantity}
+                            </div>
+                        </div>
+
+                    ))
+                }
+                    <button onClick={goToCard}>
+                      Activate Lasers
+                    </button>
       </Drawer>
     </>
   );

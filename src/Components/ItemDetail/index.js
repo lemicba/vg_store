@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { Row, Col, Button } from 'antd';
+import { Row, Col, Button, notification  } from 'antd';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { useHistory } from "react-router-dom";
 import { Store } from '../../store'
@@ -14,6 +14,18 @@ const ItemDetail = ( {item} ) => {
 
     const history = useHistory();
 
+    const openNotification = () => {
+      notification.open({
+        message: 'Producto Agregado',
+        description:
+          'Producto agregado con exito',
+        className: 'custom-class',
+        style: {
+          width: 600,
+        },
+      });
+    };
+
     const onAdd = () => {
       const actualId = item.id;
       const exist = data.items.some(items => items.id === actualId);
@@ -27,14 +39,12 @@ const ItemDetail = ( {item} ) => {
           }
         });
         data.items = [...productosCarrito]
-        history.push("/cart");
       } else {
         item.quantity = contador;
         setData({...data, cantidad: data.cantidad + contador,
           items:[...data.items, item]});
-          history.push("/cart");
       }
-          history.push("/cart");
+      openNotification();
     }
 
     return (

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import Navbar from './Components/NavBar';
 import ItemListContainer from './Components/ItemListContainer';
+import Home from './views/home'
 import ItemDetailContainer from './Components/ItemDetailContainer';
-import ErrorPage from './Components/Error';
+import ErrorPage from './views/error';
 import CartContainer from './Components/CartContainer';
 import Slider from './Components/Slider';
 import CartCheckout from './Components/CartCheckout';
@@ -20,12 +21,9 @@ function App() {
       <Store.Provider value={[data, setData]}>
         <BrowserRouter>
           <Navbar />
-          <Slider/>
             <Switch>
               <Route exact path="/">
-              <div className="cards-container"> 
-                <ItemListContainer />
-              </div>
+                <Home />
               </Route>
               <Route exact path="/categoria/:categname">
               <div className="cards-container">

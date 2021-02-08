@@ -16,11 +16,11 @@ const ItemListContainer = () => {
         .then(docs => {
             let arr = [];
             docs.forEach(doc => {
-                arr.push(doc.data())
+                arr.push({id: doc.id, data: doc.data()})
             }) 
             if(categname) {
-            const productosCategoria = arr.filter(producto => producto.categoria === categname);
-            setItems(productosCategoria)
+                const productosCategoria = arr.filter(productos => productos.data.categoria === categname);
+                setItems(productosCategoria)
             }
             else {
                 setItems(arr);
@@ -31,13 +31,12 @@ const ItemListContainer = () => {
 
 
     useEffect(() => getProducts(), [categname]);
-
     return (
         <div className="itemlist-container">
                 {
-                    items.map((item, index) => (
+                    items.map((item) => (
                             <Item
-                                intex={index}
+                                id={item.id}
                                 item={item}
                             />
                     ))

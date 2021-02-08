@@ -1,17 +1,20 @@
-.site-layout-content {
-    min-height: 280px;
-    padding: 24px;
-    background: #fff;
-  }
+.cartCheck {
+ color: #FFF;
+}
+.cart-chechout__form{
+  width: 488px;
+  margin: 0 auto;
+  background: #0F121D;
+  padding: 20px;
+  border-radius: 20px;
 
-  .cartDetail{
-    width: 600px;
-    display: flex;
-    flex-direction: row;
-    background: darkgray;
-    justify-content: space-around;
+  input {
+    width: 90%;
+    margin: 15px;
 
-    &__row {
-      text-align: center;
-    }
   }
+}
+
+.cartCheck__msj {
+  color: white;
+}

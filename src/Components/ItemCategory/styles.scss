@@ -1,0 +1,24 @@
+.item-category{
+    align-items: center;
+    display:flex;
+    height: 373px;
+    width: 567px;
+    background-color: #0B0B1F;
+    border-radius: 20px;
+    margin: 20px;
+
+    &--left{
+        margin: 20px;
+    }
+
+    &__name {
+        color: #FFF;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    &__description {
+        color: #FFF;
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+}

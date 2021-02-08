@@ -1,25 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Store } from '../../store';
 import ItemDetail from '../ItemDetail';
 import { useParams } from 'react-router-dom';
-import { productList } from "../../assets/productos";
+import { getFirestore } from '../../firebase';
 
 
-const ItemDetailContainer = () => {
-    const [product, setProduct] = useState(null);
-
+const ItemDetailContainer = ( {item} ) => {
     const { itemid } = useParams();
 
-    const getProduct = new Promise((resolve, reject) => {
-        setTimeout(()=> {
-            const productoSeleccionado = productList.find( producto => producto.id == itemid )
-            resolve(productoSeleccionado);
-        },500)
-    });
+    const db = getFirestore();
 
-    const llamadoProducto = () => {
-        getProduct.then((respuesta) => setProduct(respuesta));
-    }
-    useEffect(() => llamadoProducto(), []);
+    const [data, setData] = useContext(Store);
+
+    const [product, setProduct] = useState(null);
+
+
+    useEffect(() => {
+
+        db.collection('productos').doc(itemid).get()
+        .then(doc => {
+            if(doc.exists) {
+                setProduct(doc.data());
+            }
+        })
+        .catch(e => console.doc(e))
+    }, []);
 
     return (
         <>

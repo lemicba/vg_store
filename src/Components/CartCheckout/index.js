@@ -43,7 +43,7 @@ const CartCheckout = () => {
         <h2 className="cartCheck">Checkout</h2>
         {
             !status ?
-        <form onSubmit={submbitForm}>
+        <form className="cart-chechout__form" onSubmit={submbitForm}>
             <input type="text" value={formData.nombre}  onChange={changeInput} name="nombre" placeholder="Nombre"/>
             <input type="text" value={formData.apellido} onChange={changeInput} name="apellido" placeholder="Apellido"/>
             <input type="email" value={formData.email}  onChange={changeInput} name="email" placeholder="Email"/>
@@ -51,7 +51,7 @@ const CartCheckout = () => {
 
             <button>Pagar</button>
         </form> :
-        <p className="cartCheck">La compra se generó correctamente su numero de seguimiento es : ${idCompra} </p>
+        <p className="cartCheck__msj">La compra se generó correctamente su numero de seguimiento es : ${idCompra} </p>
         }
     </section>
   );

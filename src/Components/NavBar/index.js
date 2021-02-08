@@ -24,10 +24,9 @@ const Navbar = () => {
 						<SubMenu key="sub1" title={<span>Categorias</span>}>
 								<Menu.Item key="setting:1"><Link to={"/categoria/rpg"}>RPG</Link></Menu.Item>
 								<Menu.Item key="setting:2"><Link to={"/categoria/aventura"}>Aventura</Link></Menu.Item>
+								<Menu.Item key="setting:3"><Link to={"/categoria/accion"}>Acción</Link></Menu.Item>
+								<Menu.Item key="setting:4"><Link to={"/categoria/plataformas"}>Plataformas</Link></Menu.Item>
 						</SubMenu>
-						<Menu.Item key="contacto">
-							Contacto
-						</Menu.Item>
 					</Menu>
 				</div>
 			</div>

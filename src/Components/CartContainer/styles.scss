@@ -1,17 +1,36 @@
-.site-layout-content {
-    min-height: 280px;
-    padding: 24px;
-    background: #fff;
-  }
-
   .cartDetail{
-    width: 600px;
+    align-items: center;
+    background: #0F121D;
+    border-radius: 20px;
+    color: white;
     display: flex;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
     flex-direction: row;
-    background: darkgray;
     justify-content: space-around;
+    margin: 25px;
+    padding: 20px;
+    width: 100%;
 
+    &-container {
+      margin: 0 auto;
+      max-width: 1394px;
+      padding: 0 15px;
+      width: 100%;
+
+      h1 {
+        color: #FFF;
+      }
+    }
+
+    &-content{
+      display: block;
+    }
     &__row {
       text-align: center;
+
+      img {
+        width: 75px;
+        height: auto;
+      }
     }
   }
