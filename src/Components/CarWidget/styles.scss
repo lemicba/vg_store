@@ -1,0 +1,19 @@
+.car-widget {
+    background: #cecece;
+    border-radius: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2));
+    margin: 25px;
+    padding: 20px;
+    color: #212121;
+
+    div {
+        justify-content: center;
+        display: flex;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    &__image {
+        width: 100px;
+        height: aut;
+    }
+}

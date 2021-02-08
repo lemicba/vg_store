@@ -13,14 +13,14 @@ const ItemCategory = ( props ) => {
                 <p className="item-category__description">
                     {props.description}
                 </p>
-                <Link >
+                <Link to={`/categoria/${props.url}`}>
                     <Button type="primary" shape="round">
                         Ver categoría
                     </Button>
                 </Link>
             </div>
             <div className="item-category--right">
-                <img src={props.img} alt=""/>
+                <img src={props.img} alt={props.title}/>
             </div>
         </div>
     );

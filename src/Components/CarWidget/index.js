@@ -3,6 +3,7 @@ import { Drawer, Button, Badge } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { useHistory } from "react-router-dom";
 import { Store } from '../../store'
+import './styles.scss';
 
 const CarWidget = () => {
   const [data, setData] = useContext(Store);
@@ -38,35 +39,31 @@ const CarWidget = () => {
         onClose={onClose}
         visible={visible}
       >
-        <h4>Your cart is empty</h4>
         {
-                    items.map((items, index) => (
-                        <div className="">
-                            <div className="">
-                                <h3>
-                                    Titulo
-                                </h3>
-                                {items.titulo}
-                            </div>
-                            <div className="">
-                                <h3>
-                                    Precio
-                                </h3>
-                                {items.precio}
-                            </div>
-                            <div className="">
-                                <h3>
-                                    Cantidad
-                                </h3>
-                                {items.quantity}
-                            </div>
-                        </div>
-
-                    ))
-                }
-                    <button onClick={goToCard}>
-                      Activate Lasers
-                    </button>
+          data.items.length ?
+            items.map((items, index) => (
+                <div className="car-widget">
+                  <div>
+                    <img className="car-widget__image" src={`/${items.productImage}`} alt={items.titulo} />
+                  </div>
+                    <div className="">
+                        {items.titulo}
+                    </div>
+                    <div className="">
+                        ${items.precio}
+                    </div>
+                    <div className="">
+                        cantidad - {items.quantity}
+                    </div>
+                </div>
+            ))
+            : <h4>Tu carrito esta vacio</h4>
+        }
+          <button 
+          disabled={data.items.length ? null : 'disabled' }
+          onClick={goToCard}>
+            Ver carrito
+          </button>
       </Drawer>
     </>
   );

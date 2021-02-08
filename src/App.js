@@ -5,7 +5,6 @@ import Home from './views/home'
 import ItemDetailContainer from './Components/ItemDetailContainer';
 import ErrorPage from './views/error';
 import CartContainer from './Components/CartContainer';
-import Slider from './Components/Slider';
 import CartCheckout from './Components/CartCheckout';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Store } from './store';

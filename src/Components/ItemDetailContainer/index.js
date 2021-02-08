@@ -16,7 +16,6 @@ const ItemDetailContainer = ( {item} ) => {
 
 
     useEffect(() => {
-
         db.collection('productos').doc(itemid).get()
         .then(doc => {
             if(doc.exists) {

@@ -5,14 +5,9 @@ import './styles.scss';
 
 
 const Slider = () => {
-    
-    function onChange(a, b, c) {
-        console.log(a, b, c);
-      }
-
     return (
         <div>
-            <Carousel afterChange={onChange}>
+            <Carousel>
                 <div className="slider">
                     <img alt="primer slider" src={sliderImage1} />
                 </div>

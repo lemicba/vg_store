@@ -12,13 +12,15 @@ export default function Home() {
                 <h3 className="global-title">Destacados</h3>
                 <div className="item-category__container">
                     <ItemCategory 
-                    title="Juegos Indies" 
+                    title="Juegos de Plataformas" 
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis justo id libero malesuada."
-                    img={ImageCategoryFirst} />
+                    img={ImageCategoryFirst}
+                    url="plataformas" />
                     <ItemCategory 
                     title="Juegos RPG" 
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis justo id libero malesuada."
-                    img={ImageCategorySecond} />
+                    img={ImageCategorySecond}
+                    url="rpg" />
                 </div>
                 <h3 className="global-title">Mas Vendidos</h3>
                 <ItemListContainer />
