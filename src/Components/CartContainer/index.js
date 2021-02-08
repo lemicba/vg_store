@@ -15,13 +15,14 @@ const CartContainer = () => {
 
     function onRemove(id){
         const actualId = id;
-        const find = data.items.find((prod) => prod.id == actualId);
+        //const find = data.items.find((prod) => prod.id == actualId);
         const filter = data.items.filter((prod) => prod.id !== id);
         console.log(data);
         
         setData({ 
             ...data, 
             items: filter,
+            //cantidad: data.cantidad-cantidad,
             //precioTotal: data.precioTotal - (find.precio*find.quantity)
         });
     } 
