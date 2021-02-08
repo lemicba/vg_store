@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Item from '../Item'
+import { Spin } from 'antd';
 import { useParams } from 'react-router-dom';
 import { getFirestore } from '../../firebase';
 import './styles.scss';
@@ -32,14 +33,21 @@ const ItemListContainer = () => {
 
     useEffect(() => getProducts(), [categname]);
     return (
+        
         <div className="itemlist-container">
                 {
+                    items.length !== 0 ?
                     items.map((item) => (
                             <Item
                                 id={item.id}
                                 item={item}
                             />
                     ))
+                    :
+                    <div className="spinner__container">
+                        <Spin size="large" />
+                        <p>Cargando productos...</p>
+                    </div>
                 }
         </div>
     );

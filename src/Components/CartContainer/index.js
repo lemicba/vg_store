@@ -12,19 +12,17 @@ const CartContainer = () => {
     
     const onAdd = () => history.push("/checkout");
 
-
-    function onRemove(id){
-        const actualId = id;
+    function onRemove(items){
+        const actualId = items.id;
         //const find = data.items.find((prod) => prod.id == actualId);
-        const filter = data.items.filter((prod) => prod.id !== id);
-        console.log(data);
-        
-        setData({ 
-            ...data, 
-            items: filter,
-            //cantidad: data.cantidad-cantidad,
-            //precioTotal: data.precioTotal - (find.precio*find.quantity)
-        });
+        const filter = data.items.filter((prod) => prod.id !== actualId);
+
+        console.log(filter)
+        console.log(data)
+            const contador = items.quantity;
+
+            setData({cantidad: data.cantidad - contador,
+                items: filter });
     } 
 
   return (
@@ -32,11 +30,11 @@ const CartContainer = () => {
         <div className="cartDetail-container">
             <h1>Carrito</h1>
             <div className="cartDetail-content">
-                {   
-                    items.map((items, index) => (
+            {data.items.length ?
+                   items.map((items, index) => (
                         <div className="cartDetail">
                             <div className="cartDetail__row">
-                                <img src={items.productImage} />
+                                <img src={items.productImage} alt={items.titulo} />
                             </div>
                             <div className="cartDetail__row">
                                 {items.titulo}
@@ -47,13 +45,16 @@ const CartContainer = () => {
                             <div className="cartDetail__row">
                                 Cant {items.quantity}
                             </div>
-                            <button onClick={ () => onRemove(items.id)}>X</button>
+                            <button onClick={ () => onRemove(items)}>X</button>
                         </div>
 
                     ))
+                : <div>
+                    <p className="cartDetail-container__msj">No hay productos agregados al carrito</p>
+                </div>
                 }
                 </div>
-                <Button onClick={onAdd} type="primary">
+                <Button onClick={onAdd} disabled={data.items.length ? null : 'disabled' } type="primary">
                     Comprar
                 </Button>
         </div>
