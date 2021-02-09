@@ -15,11 +15,14 @@ const CartContainer = () => {
     function onRemove(items){
         const actualId = items.id;
         const filter = data.items.filter((prod) => prod.id !== actualId);
+        const find = data.items.find((prod) => prod.id == actualId);
 
         const contador = items.quantity;
 
         setData({cantidad: data.cantidad - contador,
-            items: filter });
+            items: filter,
+            precioTotal: data.precioTotal - (find.precio*find.quantity)
+         });
     } 
 
   return (
@@ -51,6 +54,7 @@ const CartContainer = () => {
                 </div>
                 }
                 </div>
+                <p className="cartDetail-container__msj">Total = {data.precioTotal}</p>
                 <Button onClick={onAdd} disabled={data.items.length ? null : 'disabled' } type="primary">
                     Comprar
                 </Button>

@@ -48,7 +48,6 @@ const CartCheckout = () => {
             <input type="text" value={formData.apellido} onChange={changeInput} name="apellido" placeholder="Apellido"/>
             <input type="email" value={formData.email}  onChange={changeInput} name="email" placeholder="Email"/>
             <input type="text" value={formData.tel} onChange={changeInput} name="tel" placeholder="Telefono"/>
-
             <button>Pagar</button>
         </form> :
         <p className="cartCheck__msj">La compra se generó correctamente su numero de seguimiento es : ${idCompra} </p>

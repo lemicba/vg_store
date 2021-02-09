@@ -37,10 +37,17 @@ const ItemDetail = ( {item} ) => {
           }
         });
         data.items = [...productosCarrito]
+
+        setData({...data, cantidad: data.cantidad + contador,
+          items:[...data.items],
+          precioTotal: data.precioTotal + (item.precio * contador)
+        });
       } else {
         item.quantity = contador;
         setData({...data, cantidad: data.cantidad + contador,
-          items:[...data.items, item]});
+          items:[...data.items, item],
+          precioTotal: data.precioTotal + (item.precio * contador)
+        });
       }
       openNotification();
     }
