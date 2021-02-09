@@ -23,7 +23,13 @@ const CartContainer = () => {
             items: filter,
             precioTotal: data.precioTotal - (find.precio*find.quantity)
          });
-    } 
+    }
+    const removeAll = () => {
+        setData({items: [],
+            cantidad: 0, 
+            precioTotal:0
+          });
+    }
 
   return (
     <>
@@ -55,8 +61,11 @@ const CartContainer = () => {
                 }
                 </div>
                 <p className="cartDetail-container__msj">Total = {data.precioTotal}</p>
-                <Button onClick={onAdd} disabled={data.items.length ? null : 'disabled' } type="primary">
+                <Button className="cartDetail-container__btn" onClick={onAdd} disabled={data.items.length ? null : 'disabled' } type="primary">
                     Comprar
+                </Button>
+                <Button className="cartDetail-container__btn"clasonClick={removeAll} disabled={!data.items.length ? 'disabled' : null } type="primary">
+                    Eliminar todos
                 </Button>
         </div>
     </>

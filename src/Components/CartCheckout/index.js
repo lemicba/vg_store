@@ -27,13 +27,17 @@ const CartCheckout = () => {
         items: data.items,
         date: firebase.firestore.Timestamp.fromDate(new Date()),
     }
-
+    
     const submbitForm = (e) => {
         e.preventDefault();
         db.collection('ventas').add(venta)
         .then(({id}) => {
             setStatus(true)
             setIdCompra(id);
+            setData({items: [],
+                cantidad: 0, 
+                precioTotal:0
+              });
         })
         .catch(e => console.log(e));
     }
