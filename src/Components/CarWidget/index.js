@@ -59,6 +59,7 @@ const CarWidget = () => {
             ))
             : <h4>Tu carrito esta vacio</h4>
         }
+        <p className="car-widget__text">Total = {data.precioTotal}</p>
           <button 
           disabled={data.items.length ? null : 'disabled' }
           onClick={goToCard}>
